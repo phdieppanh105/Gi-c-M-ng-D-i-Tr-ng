@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "Character": {
+      "title": "Character",
+      "description": "A character/gamebook entry in Giấc Mộng Dưới Trăng",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 200 },
+        "image": { "type": "string", "maxLength": 2000000 },
+        "characterInfo": { "type": "string", "maxLength": 100000 },
+        "story": { "type": "string", "maxLength": 100000 },
+        "firstMessage": { "type": "string", "maxLength": 100000 },
+        "moonNote": { "type": "string", "maxLength": 50000 },
+        "googleAIStudioLink": { "type": "string", "maxLength": 2000 },
+        "nglLink": { "type": "string", "maxLength": 2000 },
+        "slogan": { "type": "string", "maxLength": 500 },
+        "hashtags": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "authorEmail": { "type": "string" }
+      },
+      "required": ["name", "createdAt"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "User comment or reply on a character page",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "characterId": { "type": "string", "maxLength": 128 },
+        "parentId": { "type": "string", "maxLength": 128 },
+        "content": { "type": "string", "maxLength": 5000 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "userName": { "type": "string", "maxLength": 100 },
+        "userAvatar": { "type": "string", "maxLength": 2000000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["characterId", "content", "userId", "userName", "createdAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with custom nickname and avatar",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 200 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "nickname": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 2000000 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid"]
+    }
+  },
+  "firestore": {
+    "/characters/{characterId}": {
+      "schema": "Character",
+      "description": "Stores all gamebook characters created by the admin"
+    },
+    "/comments/{commentId}": {
+      "schema": "Comment",
+      "description": "Stores user comments and replies for characters"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Stores user profile settings like nickname and avatar"
+    }
+  }
+}

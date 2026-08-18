@@ -1,0 +1,6 @@
+{
+  "name": "GIẤC MỘNG DƯỚI TRĂNG",
+  "description": "Website và ứng dụng gamebook tương tác, lưu trữ và đọc cốt truyện nhân vật trong thế giới mộng mơ dưới ánh trăng.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
